@@ -265,5 +265,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# django-compressor cache output
-static/
+# static
+static/admin/*
+static/CACHE/*
+static/images/*
+static/modules/*
+!static/src/**
