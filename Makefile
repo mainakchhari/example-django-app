@@ -1,13 +1,21 @@
 install-python:
 	pipenv sync
 
+install-python-dev:
+	pipenv sync --dev
+
 install-node:
 	npm ci
+
+install-node-dev:
+	npm install
 
 collectstatic:
 	pipenv run python manage.py collectstatic --noinput
 
 prepare: install-python install-node collectstatic
+
+prepare-dev: install-python-dev install-node-dev
 
 migrate:
 	pipenv run python manage.py migrate
