@@ -15,12 +15,15 @@ migrate:
 runserver:
 	pipenv run python manage.py runserver
 
-run-gunicorn:
+tailwind:
+	npx tailwindcss -i ./static/src/input.css -o ./static/css/output.css
+
+run-gunicorn: tailwind
 	pipenv run gunicorn webserver.wsgi
 
-tailwind-run:
-	npx tailwindcss -i ./static/src/input.css -o ./static/src/output.css --watch
+tailwind-watch:
+	npx tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch
 
-local:
-	make -j 2 tailwind-run runserver
 .PHONY: local
+local:
+	make -j 2 tailwind-watch runserver
